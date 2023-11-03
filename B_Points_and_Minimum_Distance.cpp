@@ -14,7 +14,7 @@ int main() {
     sort(arr,arr+2*n);
     cout<<arr[n-1]-arr[0]+arr[2*n-1]-arr[n]<<endl;
     for(int i = 0, j = n; i < n; i++, j++){
-		cout<< arr[i] << " " << a[j] <<"\n";
+		cout<< arr[i] << " " << arr[j] <<"\n";
 	}
   }
     return 0;
