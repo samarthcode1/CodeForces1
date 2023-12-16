@@ -1,4 +1,4 @@
-#include<bits/stdc++.h>
+#include<iostream>
 using namespace std;
 int main(){
     int t;
@@ -6,8 +6,9 @@ int main(){
     while(t--){
         int n;
         cin>>n;
-        char str[n+1];
+        char str[21];
         cin>>str;
         cout<<str[n-1]<<"\n";
     }
+    return 0;
 }
