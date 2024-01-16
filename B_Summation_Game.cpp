@@ -18,9 +18,16 @@ int main()
     cin >> t;
     while (t--)
     {
-        int n,k;
-        cin>>n>>k;
+        int n,k,x;
+        cin>>n>>k>>x;
+        vector<int> v(n);
+        for(int i=0;i<n;i++){
+            cin>>v[i];
+        }
+        int maxi=*max_element(v.begin(),v.end());
+        unordered_map<int,int>mp;
         
+
     }
     return 0;
 }
