@@ -6,7 +6,7 @@
 using namespace std;
 
 
-int find(const vector<int> &v) {
+int find(vector<int> &v) {
     unordered_map<int, int> mp;
     int mad = 0;
     for (int i : v) {
