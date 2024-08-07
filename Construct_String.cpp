@@ -1,109 +1,75 @@
-#include <bits/stdc++.h>
-// // #include <iostream>
-// // #include <algorithm>
-// // #include <set>
-// // #include <vector>
-// // #include <string>
-// using namespace std;
-
-// int main()
-// {
-//     int t;
-//     cin >> t;
-//     while (t--)
-//     {
-//         int length;
-//         cin >> length;
-//         string s;
-//         cin >> s;
-//         string s1 = "";
-//         for (int i = 0; i < length; i++)
-//         {
-//             char pat = s[i];
-//             int repeating = 1;
-//             for (int i = i + 1; i < length; i++)
-//             {
-//                 char rep = s[i];
-//                 if (rep != pat)
-//                 {
-//                     break;
-//                 }
-//                 repeating++;
-//             }
-//             // everse(s.begin(),s.end());
-//             // unordered_set<char>s1;
-//             // for(int i=0;i<length;i++){
-//             //     s1.insert(s[i]);
-//             // }
-//             // for(auto i=s1.begin();i!=s1.end();i++){
-//             //     cout<<*i;
-//             // }
-//             i += (repeating - 1);
-//             if (repeating % 2 == 0)
-//             {
-//                 s1 += pat;
-//                 s1 += pat;
-//             }
-//             else
-//             {
-//                 s1 += pat;
-//             }
-//         }
-//         cout << s1 << "\length";
-//         // // vector<string>v;
-//         // string v="";
-//         // for(int i=0; i<length; i++){
-//         //     if(s[i]!=s[i+1])
-//         //     {
-//         //         v.push_back(s[i]);
-//         //     }
-//         // }
-//         // cout<<v<<"\length";
-
-//         // r
-//         return 0;
-//     }
-// }
-
-
-using namespace std;
-int main()
+import java.util.*;
+class Main
 {
-    int t;
-    cin >> t;
-    while (t--)
+    class Edge
     {
-        int length;
-        string s;
-        cin >> length;
-        string >> s;
-        string s1 = "";
-        for (int pointer = 0; pointer < length; pointer++)
+        int src, dest, weight;
+        Edge()
         {
-            char pat = s[pointer];
-            int repeating = 1;
-            for (int i = pointer + 1; i < length; i++)
+            src = dest = weight = 0;
+        }
+    };
+    int V, E;
+    Edge edge[];
+    Main(int v, int e)
+    {
+        V = v;
+        E = e;
+        edge = new Edge[e];
+        for (int i = 0; i < e; ++i)
+            edge[i] = new Edge();
+    }
+    void BellmanFord(Main graph, int src)
+    {
+        int V = graph.V, E = graph.E;
+        int dist[] = new int[V];
+        for (int i = 0; i < V; ++i)
+            dist[i] = Integer.MAX_VALUE;
+        dist[src] = 0;
+        for (int i = 1; i < V; ++i)
+        {
+            for (int j = 0; j < E; ++j)
             {
-                char c = s[i];
-                if (c != pat)
-                {
-                    break;
-                }
-                repeating++;
-            }
-
-            pointer += (repeating - 1);
-            if (repeating % 2 == 0)
-            {
-                s1 += pat;
-                s1 += pat;
-            }
-            else
-            {
-                s1 += pat;
+                int u = graph.edge[j].src;
+                int v = graph.edge[j].dest;
+                int weight = graph.edge[j].weight;
+                if (dist[u] != Integer.MAX_VALUE && dist[u] + weight < dist[v])
+                    dist[v] = dist[u] + weight;
             }
         }
-        cout << s1 << "\n";
+        for (int j = 0; j < E; ++j)
+        {
+            int u = graph.edge[j].src;
+            int v = graph.edge[j].dest;
+            int weight = graph.edge[j].weight;
+            if (dist[u] != Integer.MAX_VALUE && dist[u] + weight < dist[v])
+            {
+                System.out.println(-1);
+                return;
+            }
+        }
+        for (int i = 0; i < V; ++i)
+            if (dist[i] != Integer.MAX_VALUE)
+                System.out.print(dist[i] + " ");
+            else
+                System.out.print(-1 + " ");
     }
-    return 0;
+public
+    static void main(String[] args)
+    {
+        Scanner sc = new Scanner(System.in);
+        int V = sc.nextInt();
+        int E = sc.nextInt();
+        Main graph = new Main(V, E);
+        for (int i = 0; i < E; i++)
+        {
+            int u = sc.nextInt();
+            int v = sc.nextInt();
+            int w = sc.nextInt();
+            graph.edge[i].src = u;
+            graph.edge[i].dest = v;
+            graph.edge[i].weight = w;
+        }
+        graph.BellmanFord(graph, 0);
+    }
 }
