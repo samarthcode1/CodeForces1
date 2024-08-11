@@ -34,7 +34,7 @@ int main()
             int temp=v[i][0]-last;
             time=max(time,temp);
             last=v[i][1];
-        }
+        }   
         time=max(time,m-last);
         if(time>=s){
             cout<<"Yes\n";
