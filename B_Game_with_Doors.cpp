@@ -22,23 +22,24 @@ int main()
     {
         ll l1, r1, l2, r2;
         cin >> l1 >> r1 >> l2 >> r2;
-        ll open = max(l1, l2);
-        ll close = min(r1, r2);
-        if (close < open)
+        ll L = max(l1, l2);
+        ll R = min(r1, r2);
+        // cout<<L<<" "<<R<<endl;
+        if (R<L)
         {
             cout << 1 << "\n";
             continue;
         }
-        ll ans = close - open + 1;
-        if (min(l1, l2) < open)
+        ll ans = R - L;
+        if (min(l1, l2) < L)
         {
             ans++;
         }
-        if (max(r1, r2) > close)
+        if (max(r1, r2) > R)
         {
             ans++;
         }
-        cout << ans - 1 << "\n";
+        cout << ans << "\n";
     }
     return 0;
 }
