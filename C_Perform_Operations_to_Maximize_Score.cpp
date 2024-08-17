@@ -29,7 +29,7 @@ void check()
     while (lo <= hi)
     {
         long long mid = lo + (hi - lo) / 2;
-        long long req = (n - 1) / 2 + 2;
+        long long req = (n + 1) / 2 + 1;
         long long rem = k;
         for (long long i = n - 1; i >= 0; i--)
         {
